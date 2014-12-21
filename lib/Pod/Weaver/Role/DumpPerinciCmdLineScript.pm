@@ -42,3 +42,7 @@ no Moose::Role;
 1;
 # ABSTRACT: Role to dump Perinci::CmdLine script
 
+=head1 METHODS
+
+=head2 $obj->dump_perinci_cmdline_script($input)
+
