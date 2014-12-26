@@ -26,7 +26,8 @@ sub dump_perinci_cmdline_script {
     # if file object is not a real file on the filesystem, put it in a temporary
     # file first so Perinci::CmdLine::Dump can see it.
     unless ($file->isa("Dist::Zilla::File::OnDisk")) {
-        my ($fh, $tempname) = tempfile();
+        require File::Temp;
+        my ($fh, $tempname) = File::Temp::tempfile();
         print $fh $file->content;
         close $fh;
         $filename = $tempname;
