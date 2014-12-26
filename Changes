@@ -1,5 +1,10 @@
 Revision history for Pod-Weaver-Role-DumpPerinciCmdLineScript
 
+0.02    2014-12-26 (PERLANCAR)
+
+	- [Bugfix] Forgot to require File::Temp.
+
+
 0.01    2014-12-21 (PERLANCAR)
 
         - First release.
