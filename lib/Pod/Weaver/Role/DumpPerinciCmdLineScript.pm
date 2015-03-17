@@ -47,3 +47,8 @@ no Moose::Role;
 
 =head2 $obj->dump_perinci_cmdline_script($input)
 
+
+=head1 SEE ALSO
+
+L<Dist::Zilla::Role::DumpPerinciCmdLineScript>
+
