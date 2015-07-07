@@ -6,35 +6,36 @@ package Pod::Weaver::Role::DumpPerinciCmdLineScript;
 use 5.010001;
 use Moose::Role;
 
+use File::Slurper qw(write_binary);
 use Perinci::CmdLine::Dump;
 
 sub dump_perinci_cmdline_script {
     my ($self, $input) = @_;
 
-    my $filename = $input->{filename};
-
     # find file object
     my $file;
     for (@{ $input->{zilla}->files }) {
-        if ($_->name eq $filename) {
+        if ($_->name eq $input->{filename}) {
             $file = $_;
             last;
         }
     }
-    die "Can't find file object for $filename" unless $file;
+    die "Can't find file object for $input->{filename}" unless $file;
 
-    # if file object is not a real file on the filesystem, put it in a temporary
-    # file first so Perinci::CmdLine::Dump can see it.
-    unless ($file->isa("Dist::Zilla::File::OnDisk")) {
+    # because we need an actual file for Perinci::CmdLine::Dump, we'll dump the
+    # content of the file object to a temp file first. this includes DZF:OnDisk
+    # object too, because the content and the name might not match actual file
+    # on the filesystem anymore (e.g. see DZP:AddFile::FromFS where the file
+    # object has its name() changed).
+    my $tempname;
+    {
         require File::Temp;
-        my ($fh, $tempname) = File::Temp::tempfile();
-        print $fh $file->content;
-        close $fh;
-        $filename = $tempname;
+        (undef, $tempname) = File::Temp::tempfile();
+        write_binary($tempname, $file->content);
     }
 
     Perinci::CmdLine::Dump::dump_perinci_cmdline_script(
-        filename => $filename,
+        filename => $tempname,
         libs => ['lib'],
     );
 }
@@ -51,4 +52,3 @@ no Moose::Role;
 =head1 SEE ALSO
 
 L<Dist::Zilla::Role::DumpPerinciCmdLineScript>
-
