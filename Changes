@@ -1,5 +1,12 @@
 Revision history for Pod-Weaver-Role-DumpPerinciCmdLineScript
 
+0.03    2015-07-07 (PERLANCAR)
+
+	- Handle modified DZF:OnDisk object.
+
+	- Mention DZR:DumpPerinciCmdLineScript.
+
+
 0.02    2014-12-26 (PERLANCAR)
 
 	- [Bugfix] Forgot to require File::Temp.
