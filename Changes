@@ -1,5 +1,10 @@
 Revision history for Pod-Weaver-Role-DumpPerinciCmdLineScript
 
+0.04    2015-12-31 (PERLANCAR)
+
+	- Also set DZIL=1, like in DZR:DumpPerinciCmdLineScript.
+
+
 0.03    2015-07-07 (PERLANCAR)
 
 	- Handle modified DZF:OnDisk object.

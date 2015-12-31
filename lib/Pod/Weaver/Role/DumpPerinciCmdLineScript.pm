@@ -44,7 +44,7 @@ sub dump_perinci_cmdline_script {
     # (normal @INC). --perlancar
     local $ENV{DZIL} = 1;
 
-    $self->log_debug(["Dumping Perinci::CmdLine script '%s'", $filename]);
+    $self->log_debug(["Dumping Perinci::CmdLine script '%s'", $file->name]);
 
     my $res = Perinci::CmdLine::Dump::dump_perinci_cmdline_script(
         filename => $tempname,
