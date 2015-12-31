@@ -34,10 +34,25 @@ sub dump_perinci_cmdline_script {
         write_binary($tempname, $file->content);
     }
 
-    Perinci::CmdLine::Dump::dump_perinci_cmdline_script(
+    # just like in Dist::Zilla::Role::DumpPerinciCmdLineScript, we also set this
+    # env to let script know that it's being dumped in dzil context, so they can
+    # act accordingly if they need to. this is first done when I'm building
+    # App-lcpan, where the bin/lcpan script collects subcommands by listing
+    # subcommand modules (App::lcpan::Cmd::*). When the dist is being built, we
+    # only want to collect subcommand modules from our own dist (@INC = ("lib"))
+    # but when operating normally, we want to search all installed modules
+    # (normal @INC). --perlancar
+    local $ENV{DZIL} = 1;
+
+    $self->log_debug(["Dumping Perinci::CmdLine script '%s'", $filename]);
+
+    my $res = Perinci::CmdLine::Dump::dump_perinci_cmdline_script(
         filename => $tempname,
         libs => ['lib'],
     );
+
+    $self->log_debug(["Dump result: %s", $res]);
+    $res;
 }
 
 no Moose::Role;
