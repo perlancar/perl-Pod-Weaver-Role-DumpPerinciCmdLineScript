@@ -1,5 +1,11 @@
 Revision history for Pod-Weaver-Role-DumpPerinciCmdLineScript
 
+0.05    2016-01-10 (PERLANCAR)
+
+	- [Bugfix] Use Data::Dmp to log result dump instead of passing
+	  directly to dzil's logger (which uses JSON to dump references).
+
+
 0.04    2015-12-31 (PERLANCAR)
 
 	- Also set DZIL=1, like in DZR:DumpPerinciCmdLineScript.
