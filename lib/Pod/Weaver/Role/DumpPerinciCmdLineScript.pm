@@ -32,7 +32,8 @@ sub dump_perinci_cmdline_script {
     {
         require File::Temp;
         (undef, $tempname) = File::Temp::tempfile();
-        write_binary($tempname, $file->content);
+        $self->log_debug(["Writing %s to %s", $file->name, $tempname]);
+        write_binary($tempname, $file->encoded_content);
     }
 
     # just like in Dist::Zilla::Role::DumpPerinciCmdLineScript, we also set this
