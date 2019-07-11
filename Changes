@@ -1,31 +1,31 @@
-0.06    2016-05-20 (PERLANCAR)
+0.06    2016-05-20  Released-By: PERLANCAR
 
 	- [Bugfix] Use encoded_content() instead of content().
 
 
-0.05    2016-01-10 (PERLANCAR)
+0.05    2016-01-10  Released-By: PERLANCAR
 
 	- [Bugfix] Use Data::Dmp to log result dump instead of passing
 	  directly to dzil's logger (which uses JSON to dump references).
 
 
-0.04    2015-12-31 (PERLANCAR)
+0.04    2015-12-31  Released-By: PERLANCAR
 
 	- Also set DZIL=1, like in DZR:DumpPerinciCmdLineScript.
 
 
-0.03    2015-07-07 (PERLANCAR)
+0.03    2015-07-07  Released-By: PERLANCAR
 
 	- Handle modified DZF:OnDisk object.
 
 	- Mention DZR:DumpPerinciCmdLineScript.
 
 
-0.02    2014-12-26 (PERLANCAR)
+0.02    2014-12-26  Released-By: PERLANCAR
 
 	- [Bugfix] Forgot to require File::Temp.
 
 
-0.01    2014-12-21 (PERLANCAR)
+0.01    2014-12-21  Released-By: PERLANCAR
 
         - First release.
